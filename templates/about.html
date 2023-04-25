@@ -47,6 +47,48 @@
                                 {% endfor %}
                             </ul>
                         </li>
+
+
+
+
+
+                    {% if request.user.is_authenticated %}
+
+                                <li class="navbar-nav ml-auto">
+                                    <a href="{% url 'profile' request.user.username %}"
+                                       class="nav-item nav-link {% if request.user.username in request.path %} active {% endif %}">
+                                        Profile
+                                    </a>
+
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url "logout_page" %}"
+                                       style="background: brown">logout</a>
+                                </li>
+                            {% else %}
+
+                                <li class="nav-item">
+                                    <a class="nav-link" style="background: green"
+                                       href="{% url "login_page" %}">login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url "register_page" %}" style="background: coral">register</a>
+                                </li>
+                            {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" style="background: blue"> Выполнен вход как : {{ request.user }} </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="background: #3b7405" href="/admin">
+                                админка </a>
+                        </li>
+
+
+
+
+
+
                     </ul>
                 </div>
             </div>
